@@ -33,13 +33,15 @@ export default function Cart() {
               <span>R$79,90</span>
             </td>
             <td>
-              <button type="button">
-                <MdRemoveCircleOutline size={20} color="#7159c1" />
-              </button>
-              <input type="number" readOnly value={2} />
-              <button type="button">
-                <MdAddCircleOutline size={20} color="#7159c1" />
-              </button>
+              <div>
+                <button type="button">
+                  <MdRemoveCircleOutline size={20} color="#7159c1" />
+                </button>
+                <input type="number" readOnly value={2} />
+                <button type="button">
+                  <MdAddCircleOutline size={20} color="#7159c1" />
+                </button>
+              </div>
             </td>
             <td>
               <strong>R$159,80</strong>
@@ -57,7 +59,7 @@ export default function Cart() {
         <button type="button">Finalizar pedido</button>
 
         <Total>
-          <span>Total</span>
+          <span>TOTAL</span>
           <strong>R$1920,28</strong>
         </Total>
       </footer>
