@@ -20,7 +20,7 @@ class Home extends Component {
       priceFormatted: formatPrice(product.price),
     }));
 
-    this.setState({ products: response.data });
+    this.setState({ products: data });
   }
 
   handleAddProduct = (product) => {
