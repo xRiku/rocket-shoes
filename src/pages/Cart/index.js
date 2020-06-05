@@ -10,7 +10,6 @@ import { formatPrice } from '../../util/format';
 import { Container, ProductTable, Total } from './styles';
 
 function Cart({ cart }) {
-  console.log(cart);
   return (
     <Container>
       <ProductTable>
@@ -62,7 +61,11 @@ function Cart({ cart }) {
 
         <Total>
           <span>TOTAL</span>
-          <strong>R$1920,28</strong>
+          <strong>
+            {formatPrice(
+              cart.reduce((acc, cur) => acc + cur.price * cur.amount, 0),
+            )}
+          </strong>
         </Total>
       </footer>
     </Container>
