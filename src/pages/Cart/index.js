@@ -6,6 +6,7 @@ import {
   MdDelete,
 } from 'react-icons/md';
 
+import { formatPrice } from '../../util/format';
 import { Container, ProductTable, Total } from './styles';
 
 function Cart({ cart }) {
@@ -44,7 +45,7 @@ function Cart({ cart }) {
                 </div>
               </td>
               <td>
-                <strong>R$159,80</strong>
+                <strong>{formatPrice(product.amount * product.price)}</strong>
               </td>
               <td>
                 <button type="button">
