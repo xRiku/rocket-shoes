@@ -62,7 +62,7 @@ function Cart({ cart, removeFromCart, updateAmount }) {
                 </div>
               </td>
               <td>
-                <strong>{formatPrice(product.amount * product.price)}</strong>
+                <strong>{product.subtotal}</strong>
               </td>
               <td>
                 <button type="button">
@@ -95,7 +95,10 @@ function Cart({ cart, removeFromCart, updateAmount }) {
 }
 
 const mapStateToProps = (state) => ({
-  cart: state.cart,
+  cart: state.cart.map((product) => ({
+    ...product,
+    subtotal: formatPrice(product.price * product.amount),
+  })),
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators(CartActions, dispatch);
