@@ -12,15 +12,13 @@ import * as CartActions from '../../store/modules/cart/actions';
 import { formatPrice } from '../../util/format';
 import { Container, ProductTable, Total } from './styles';
 
-function Cart({
- cart, removeFromCart, updateAmount, total 
-}) {
+function Cart({ cart, removeFromCart, updateAmountRequest, total }) {
   function increment(product) {
-    updateAmount(product.id, product.amount + 1);
+    updateAmountRequest(product.id, product.amount + 1);
   }
 
   function decrement(product) {
-    updateAmount(product.id, product.amount - 1);
+    updateAmountRequest(product.id, product.amount - 1);
   }
   return (
     <Container>
@@ -100,12 +98,11 @@ const mapStateToProps = (state) => ({
   total: formatPrice(
     state.cart.reduce(
       (total, product) => total + product.amount * product.price,
-      0,
-    )
+      0
+    ),
   ),
 });
 
-const mapDispatchToProps = (dispatch) =>
-  bindActionCreators(CartActions, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators(CartActions, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);
