@@ -1,6 +1,5 @@
-import {
- call, put, all, takeLatest, select 
-} from 'redux-saga/effects';
+import { call, put, all, takeLatest, select } from 'redux-saga/effects';
+import { toast } from 'react-toastify';
 
 import api from '../../../services/api';
 import { formatPrice } from '../../../util/format';
@@ -8,8 +7,7 @@ import { formatPrice } from '../../../util/format';
 import { addToCartSuccess, updateAmount } from './actions';
 
 function* addToCart({ id }) {
-  const productExists = yield select((state) =>
-    state.cart.find((p) => p.id === id),
+  const productExists = yield select((state) => state.cart.find((p) => p.id === id),
   );
 
   const stock = yield call(api.get, `/stock/${id}`);
@@ -20,7 +18,7 @@ function* addToCart({ id }) {
   const amount = currentAmount + 1;
 
   if (amount > stockAmount) {
-    console.tron.warn('ERRO');
+    toast.error('Produto fora do estoque');
     return;
   }
 
